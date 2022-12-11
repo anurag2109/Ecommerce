@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Product {
 	@Id
 	@GeneratedValue
-	private String productId;
+	private int productId;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ProductCategory.productCategoryId")
 	private String productCategoryId;

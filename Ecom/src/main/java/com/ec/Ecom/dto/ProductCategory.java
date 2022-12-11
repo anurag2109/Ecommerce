@@ -15,6 +15,6 @@ public class ProductCategory {
 	
 	@Id
 	@GeneratedValue
-	private String productCategoryId;
+	private int productCategoryId;
 	private String productCategoryName;
 }
