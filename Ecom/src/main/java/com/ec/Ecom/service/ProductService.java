@@ -15,6 +15,7 @@ public interface ProductService {
     public Optional<Product> updateProduct(int productId, Product product) throws NoDataFoundException;
 
     public Optional<Product> getProductByProductId(int productId) throws  InvalidIdException;
+    public Optional<List<Product>> getProductsByCategoryId(String productCategory) throws  InvalidIdException;
     public Optional<List<Product>> getAllProducts() throws InvalidIdException;
     public String deleteProductByProductId(int productId) throws NoDataFoundException;
 }

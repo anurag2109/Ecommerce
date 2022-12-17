@@ -30,11 +30,19 @@ public class ProductServiceImpl implements ProductService {
 		// TODO Auto-generated method stub
 		if(productRepository.existsById(productId)) {
 			Product prod = productRepository.findById(productId).get();
-			
-			
+			prod.setDescription(product.getDescription());
+			prod.setPrice(product.getPrice());
+			prod.setProductCategoryId(product.getProductCategoryId());
+			prod.setProductImages(product.getProductImages());
+			prod.setQuantityInStock(product.getQuantityInStock());
+			prod.setProductName(product.getProductName());
+			productRepository.save(prod);
+			return Optional.ofNullable(prod);
+		}else {
+			throw new NoDataFoundException("Didn't find the product with this product id");
 		}
-		return Optional.empty();
 	}
+	
 
 	@Override
 	public Optional<Product> getProductByProductId(int productId) throws InvalidIdException {
@@ -64,6 +72,12 @@ public class ProductServiceImpl implements ProductService {
 			e.printStackTrace();
 		}
 		return "failed to delete product";
+	}
+
+	@Override
+	public Optional<List<Product>> getProductsByCategoryId(String productCategory) throws InvalidIdException {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(productRepository.findAllByProductCategoryId(productCategory));
 	}
 
 }
